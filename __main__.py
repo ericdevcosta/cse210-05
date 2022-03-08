@@ -1,9 +1,9 @@
 import constants
 
 from cicle.game.casting.cast import Cast
-from cicle.game.casting.trail import Trail
+from cicle.game.casting.coin import coin
 from cicle.game.casting.score import Score
-from cicle.game.casting.rider import Rider
+from cicle.game.casting.rider import rider
 from cicle.game.scripting.script import Script
 from cicle.game.scripting.control_actors_action import ControlActorsAction
 from cicle.game.scripting.move_actors_action import MoveActorsAction
@@ -20,8 +20,8 @@ def main():
     
     # create the cast
     cast = Cast()
-    cast.add_actor("Trails", Trail())
-    cast.add_actor("Riders", Rider())
+    cast.add_actor("Trails", coin())
+    cast.add_actor("Riders", rider())
     cast.add_actor("scores", Score())
    
     # start the game
