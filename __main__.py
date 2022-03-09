@@ -20,7 +20,7 @@ def main():
     
     # create the cast
     cast = Cast()
-    cast.add_actor("Trails", coin())
+    cast.add_actor("Coins", coin())
     cast.add_actor("Riders", rider())
     cast.add_actor("scores", Score())
    
