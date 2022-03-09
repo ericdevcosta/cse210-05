@@ -1,6 +1,6 @@
 import constants
-from game.scripting.action import Action
-from game.shared.point import Point
+from cicle.game.scripting.action import Action
+from cicle.game.shared.point import Point
 
 
 class ControlActorsAction(Action):
@@ -45,5 +45,5 @@ class ControlActorsAction(Action):
         if self._keyboard_service.is_key_down('s'):
             self._direction = Point(0, constants.CELL_SIZE)
         
-        snake = cast.get_first_actor("snakes")
-        snake.turn_head(self._direction)
+        rider = cast.get_first_actor("Riders")
+        rider.turn_head(self._direction)

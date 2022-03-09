@@ -1,4 +1,4 @@
-from game.scripting.action import Action
+from cicle.game.scripting.action import Action
 
 
 # TODO: Implement MoveActorsAction class here! 
@@ -13,7 +13,7 @@ class MoveActorsAction(Action):
     def execute(self, cast, script):
         
         actors = cast.get_all_actors()
-        rider = cast.get_first_actor("riders")
+        rider = cast.get_first_actor("Riders")
 
         for actor in actors:
             actor.move_next()

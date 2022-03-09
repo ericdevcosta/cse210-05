@@ -1,4 +1,4 @@
-from game.casting.actor import Actor
+from cicle.game.casting.actor import Actor
 
 
 class Score(Actor):

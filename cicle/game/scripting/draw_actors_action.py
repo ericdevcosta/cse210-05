@@ -1,4 +1,4 @@
-from game.scripting.action import Action
+from cicle.game.scripting.action import Action
 
 
 class DrawActorsAction(Action):

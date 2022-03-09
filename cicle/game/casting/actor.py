@@ -1,6 +1,6 @@
 import constants
-from game.shared.color import Color
-from game.shared.point import Point
+from cicle.game.shared.color import Color
+from cicle.game.shared.point import Point
 
 
 class Actor:

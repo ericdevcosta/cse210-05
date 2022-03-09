@@ -1,6 +1,6 @@
 import constants
-from game.casting.actor import Actor
-from game.shared.point import Point
+from cicle.game.casting.actor import Actor
+from cicle.game.shared.point import Point
 
 
 class rider(Actor):
@@ -55,7 +55,7 @@ class rider(Actor):
         x = int(constants.MAX_X / 2)
         y = int(constants.MAX_Y / 2)
 
-        for i in range(constants.rider_LENGTH):
+        for i in range(constants.RIDER_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "8" if i == 0 else "#"
