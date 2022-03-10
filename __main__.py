@@ -23,6 +23,8 @@ def main():
     cast.add_actor("Coins", coin())
     cast.add_actor("Riders", rider())
     cast.add_actor("scores", Score())
+    cast.add_actor("Riders", rider())
+    cast.add_actor("scores", Score())
    
     # start the game
     keyboard_service = KeyboardService()

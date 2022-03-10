@@ -38,14 +38,23 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         score = cast.get_first_actor("scores")
+        score1 = cast.get_second_actor("scores")
         coin = cast.get_first_actor("Coins")
         rider = cast.get_first_actor("Riders")
+        rider1 = cast.get_second_actor("Riders")
         head = rider.get_head()
+        head1 = rider1.get_head()
 
         if head.get_position().equals(coin.get_position()):
             points = coin.get_points()
             rider.grow_tail(points)
             score.add_points(points)
+            coin.reset()
+            
+        if head1.get_position().equals(coin.get_position()):
+            points = coin.get_points()
+            rider1.grow_tail(points)
+            score1.add_points(points)
             coin.reset()
     
     def _handle_segment_collision(self, cast):
@@ -55,11 +64,26 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         rider = cast.get_first_actor("Riders")
+        rider1 = cast.get_second_actor("Riders")
         head = rider.get_segments()[0]
+        head1 = rider1.get_segments()[0]
         segments = rider.get_segments()[1:]
+        segments1 = rider1.get_segments()[1:]
+        score = cast.get_first_actor("scores")
+        score1 = cast.get_second_actor("scores")
         
         for segment in segments:
             if head.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+            elif head1.get_position().equals(segment.get_position()):
+                score.add_points(25)
+                self._is_game_over = True
+        
+        for segment1 in segments1:
+            if head1.get_position().equals(segment1.get_position()):
+                self._is_game_over = True
+            elif head.get_position().equals(segment1.get_position()):
+                score1.add_points(25)
                 self._is_game_over = True
         
     def _handle_game_over(self, cast):
