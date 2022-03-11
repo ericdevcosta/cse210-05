@@ -15,7 +15,9 @@ class rider(Actor):
     def __init__(self, playertype):
         super().__init__()
         self._segments = []
-        self._prepare_body(playertype)
+        self._playertype = playertype
+        self._prepare_body()
+
 
     def get_segments(self):
         return self._segments
@@ -35,6 +37,11 @@ class rider(Actor):
         return self._segments[0]
 
     def grow_tail(self, number_of_segments):
+        if self._playertype == "player1":
+            color = constants.GREEN
+        elif self._playertype == "player2":
+            color = constants.BLUE
+            
         for i in range(number_of_segments):
             tail = self._segments[-1]
             velocity = tail.get_velocity()
@@ -45,14 +52,14 @@ class rider(Actor):
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text("#")
-            segment.set_color(constants.GREEN)
+            segment.set_color(color)
             self._segments.append(segment)
 
     def turn_head(self, velocity):
         self._segments[0].set_velocity(velocity)
     
-    def _prepare_body(self, playertype):
-        if playertype == "player1":   
+    def _prepare_body(self):
+        if self._playertype == "player1":   
             x = int(constants.MAX_X / 4)
             y = int(constants.MAX_Y / 2)
 
@@ -69,7 +76,7 @@ class rider(Actor):
                 segment.set_color(color)
                 self._segments.append(segment)
     
-        elif playertype == "player2":
+        elif self._playertype == "player2":
             x = int(constants.MAX_X / 4 + constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
 
