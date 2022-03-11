@@ -46,11 +46,11 @@ class rider(Actor):
             tail = self._segments[-1]
             velocity = tail.get_velocity()
             offset = velocity.reverse()
-            position = tail.get_position().add(offset)
+            position = tail.get_position()#.add(offset)
             
             segment = Actor()
             segment.set_position(position)
-            segment.set_velocity(velocity)
+            #segment.set_velocity(velocity)
             segment.set_text("#")
             segment.set_color(color)
             self._segments.append(segment)
