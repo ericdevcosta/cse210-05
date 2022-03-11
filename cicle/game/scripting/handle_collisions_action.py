@@ -93,8 +93,10 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
-            rider = cast.get_first_actor("Riders")
-            segments = rider.get_segments()
+            rider1 = cast.get_first_actor("Riders")
+            rider2 = cast.get_second_actor("Riders")
+            segments1 = rider1.get_segments()
+            segments2 = rider2.get_segments()
             coin = cast.get_first_actor("Coins")
 
             x = int(constants.MAX_X / 2)
@@ -106,6 +108,8 @@ class HandleCollisionsAction(Action):
             message.set_position(position)
             cast.add_actor("messages", message)
 
-            for segment in segments:
-                segment.set_color(constants.WHITE)
+            for segment1 in segments1:
+                segment1.set_color(constants.WHITE)
+            for segment2 in segments2:
+                segment2.set_color(constants.WHITE)
             coin.set_color(constants.WHITE)
