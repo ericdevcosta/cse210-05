@@ -93,23 +93,57 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
+<<<<<<< Updated upstream
             rider1 = cast.get_first_actor("Riders")
             rider2 = cast.get_second_actor("Riders")
             segments1 = rider1.get_segments()
             segments2 = rider2.get_segments()
             coin = cast.get_first_actor("Coins")
+=======
+            score1 = cast.get_first_actor("scores")
+            score2 = cast.get_second_actor("scores")
+>>>>>>> Stashed changes
 
-            x = int(constants.MAX_X / 2)
-            y = int(constants.MAX_Y / 2)
-            position = Point(x, y)
+            if score1 > score2:
+                rider = cast.get_first_actor("Riders")
+                segments = rider.get_segments()
+                coin = cast.get_first_actor("Coins")
 
-            message = Actor()
-            message.set_text("Game Over!")
-            message.set_position(position)
-            cast.add_actor("messages", message)
+                x = int(constants.MAX_X / 2)
+                y = int(constants.MAX_Y / 2)
+                position = Point(x, y)
 
+<<<<<<< Updated upstream
             for segment1 in segments1:
                 segment1.set_color(constants.WHITE)
             for segment2 in segments2:
                 segment2.set_color(constants.WHITE)
             coin.set_color(constants.WHITE)
+=======
+                message = Actor()
+                message.set_text("Player 1 Wins!")
+                message.set_position(position)
+                cast.add_actor("messages", message)
+
+                for segment in segments:
+                    segment.set_color(constants.WHITE)
+                coin.set_color(constants.WHITE)
+
+            if score1 < score2:
+                rider = cast.get_second_actor("Riders")
+                segments = rider.get_segments()
+                coin = cast.get_first_actor("Coins")
+
+                x = int(constants.MAX_X / 2)
+                y = int(constants.MAX_Y / 2)
+                position = Point(x, y)
+
+                message = Actor()
+                message.set_text("Player 2 Wins!")
+                message.set_position(position)
+                cast.add_actor("messages", message)
+
+                for segment in segments:
+                    segment.set_color(constants.WHITE)
+                coin.set_color(constants.WHITE)
+>>>>>>> Stashed changes
