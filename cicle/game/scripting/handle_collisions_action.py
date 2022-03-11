@@ -75,6 +75,7 @@ class HandleCollisionsAction(Action):
         for segment in segments:
             if head.get_position().equals(segment.get_position()):
                 self._is_game_over = True
+                score1.add_points(25)
             elif head1.get_position().equals(segment.get_position()):
                 score.add_points(25)
                 self._is_game_over = True
@@ -82,6 +83,7 @@ class HandleCollisionsAction(Action):
         for segment1 in segments1:
             if head1.get_position().equals(segment1.get_position()):
                 self._is_game_over = True
+                score.add_points(25)
             elif head.get_position().equals(segment1.get_position()):
                 score1.add_points(25)
                 self._is_game_over = True
@@ -93,33 +95,20 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
-<<<<<<< Updated upstream
-            rider1 = cast.get_first_actor("Riders")
-            rider2 = cast.get_second_actor("Riders")
-            segments1 = rider1.get_segments()
-            segments2 = rider2.get_segments()
-            coin = cast.get_first_actor("Coins")
-=======
-            score1 = cast.get_first_actor("scores")
-            score2 = cast.get_second_actor("scores")
->>>>>>> Stashed changes
+            score1 = cast.get_first_actor("scores").get_score()
+            score2 = cast.get_second_actor("scores").get_score()
 
             if score1 > score2:
                 rider = cast.get_first_actor("Riders")
+                rider1 = cast.get_second_actor("Riders")
                 segments = rider.get_segments()
+                segments1 = rider1.get_segments()
                 coin = cast.get_first_actor("Coins")
 
                 x = int(constants.MAX_X / 2)
                 y = int(constants.MAX_Y / 2)
                 position = Point(x, y)
 
-<<<<<<< Updated upstream
-            for segment1 in segments1:
-                segment1.set_color(constants.WHITE)
-            for segment2 in segments2:
-                segment2.set_color(constants.WHITE)
-            coin.set_color(constants.WHITE)
-=======
                 message = Actor()
                 message.set_text("Player 1 Wins!")
                 message.set_position(position)
@@ -127,11 +116,16 @@ class HandleCollisionsAction(Action):
 
                 for segment in segments:
                     segment.set_color(constants.WHITE)
+                    
+                for segment1 in segments1:
+                    segment1.set_color(constants.WHITE)
                 coin.set_color(constants.WHITE)
 
-            if score1 < score2:
-                rider = cast.get_second_actor("Riders")
+            elif score1 < score2:
+                rider = cast.get_first_actor("Riders")
+                rider1 = cast.get_second_actor("Riders")
                 segments = rider.get_segments()
+                segments1 = rider1.get_segments()
                 coin = cast.get_first_actor("Coins")
 
                 x = int(constants.MAX_X / 2)
@@ -145,5 +139,30 @@ class HandleCollisionsAction(Action):
 
                 for segment in segments:
                     segment.set_color(constants.WHITE)
+                    
+                for segment1 in segments1:
+                    segment1.set_color(constants.WHITE)
                 coin.set_color(constants.WHITE)
->>>>>>> Stashed changes
+                
+            else:
+                rider = cast.get_first_actor("Riders")
+                rider1 = cast.get_second_actor("Riders")
+                segments = rider.get_segments()
+                segments1 = rider1.get_segments()
+                coin = cast.get_first_actor("Coins")
+
+                x = int(constants.MAX_X / 2)
+                y = int(constants.MAX_Y / 2)
+                position = Point(x, y)
+
+                message = Actor()
+                message.set_text("Tie game!")
+                message.set_position(position)
+                cast.add_actor("messages", message)
+
+                for segment in segments:
+                    segment.set_color(constants.WHITE)
+                    
+                for segment1 in segments1:
+                    segment1.set_color(constants.WHITE)
+                coin.set_color(constants.WHITE)
