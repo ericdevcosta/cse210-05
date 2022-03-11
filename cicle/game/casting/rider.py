@@ -37,6 +37,7 @@ class rider(Actor):
     def grow_tail(self, number_of_segments):
         for i in range(number_of_segments):
             tail = self._segments[-1]
+            tail = self._segments[-1]
             velocity = tail.get_velocity()
             offset = velocity.reverse()
             position = tail.get_position().add(offset)
@@ -52,7 +53,7 @@ class rider(Actor):
         self._segments[0].set_velocity(velocity)
     
     def _prepare_body(self):
-        x = int(constants.MAX_X / 2)
+        x = int(constants.MAX_X / 4)
         y = int(constants.MAX_Y / 2)
 
         for i in range(constants.RIDER_LENGTH):

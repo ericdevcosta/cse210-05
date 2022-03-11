@@ -14,7 +14,9 @@ class MoveActorsAction(Action):
         
         actors = cast.get_all_actors()
         rider = cast.get_first_actor("Riders")
+        rider1 = cast.get_second_actor("Riders")
 
         for actor in actors:
             actor.move_next()
             rider.grow_tail(1)
+            rider1.grow_tail(1)
