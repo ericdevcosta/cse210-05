@@ -1,4 +1,6 @@
 from cicle.game.casting.actor import Actor
+from cicle.game.shared.point import Point
+import constants
 
 
 class Score(Actor):
@@ -12,10 +14,12 @@ class Score(Actor):
     Attributes:
         _points (int): The points earned in the game.
     """
-    def __init__(self):
+    def __init__(self, playertype):
         super().__init__()
         self._points = 0
         self.add_points(0)
+        if playertype == "player2":
+            self.set_position(Point(constants.MAX_X - (constants.CELL_SIZE * 6), 0))
 
     def add_points(self, points):
         """Adds the given points to the score's total points.
