@@ -21,9 +21,9 @@ def main():
     # create the cast
     cast = Cast()
     cast.add_actor("Coins", coin())
-    cast.add_actor("Riders", rider())
+    cast.add_actor("Riders", rider("player1"))
     cast.add_actor("scores", Score())
-    cast.add_actor("Riders", rider())
+    cast.add_actor("Riders", rider("player2"))
     cast.add_actor("scores", Score())
    
     # start the game
