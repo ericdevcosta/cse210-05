@@ -30,39 +30,58 @@ class ControlActorsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
+        rider = cast.get_first_actor("Riders")
+        rider2 = cast.get_second_actor("Riders")
         # left
         if self._keyboard_service.is_key_down('a'):
             self._direction = Point(-constants.CELL_SIZE, 0)
+            rider.grow_tail(1)
+            
         
         # right
         if self._keyboard_service.is_key_down('d'):
             self._direction = Point(constants.CELL_SIZE, 0)
+            rider.grow_tail(1)
+            
         
         # up
         if self._keyboard_service.is_key_down('w'):
             self._direction = Point(0, -constants.CELL_SIZE)
+            rider.grow_tail(1)
+            
         
         # down
         if self._keyboard_service.is_key_down('s'):
             self._direction = Point(0, constants.CELL_SIZE)
+            rider.grow_tail(1)
+            
         
         # left
         if self._keyboard_service.is_key_down('j'):
             self._direction2 = Point(-constants.CELL_SIZE, 0)
+            
+            rider2.grow_tail(1)
         
         # right
         if self._keyboard_service.is_key_down('l'):
             self._direction2 = Point(constants.CELL_SIZE, 0)
+            
+            rider2.grow_tail(1)
         
         # up
         if self._keyboard_service.is_key_down('i'):
             self._direction2 = Point(0, -constants.CELL_SIZE)
+            
+            rider2.grow_tail(1)
         
         # down
         if self._keyboard_service.is_key_down('k'):
             self._direction2 = Point(0, constants.CELL_SIZE)
             
+            rider2.grow_tail(1)
+            
         rider = cast.get_first_actor("Riders")
         rider.turn_head(self._direction)
+        
         rider2 = cast.get_second_actor("Riders")
         rider2.turn_head(self._direction2)

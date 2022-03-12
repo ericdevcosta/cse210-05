@@ -18,5 +18,4 @@ class MoveActorsAction(Action):
 
         for actor in actors:
             actor.move_next()
-            rider.grow_tail(1)
-            rider1.grow_tail(1)
+            
